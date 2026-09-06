@@ -2,7 +2,7 @@
 
 A recruiter-facing developer portfolio for Bolla Lokesh Reddy, built with Next.js (App Router), TypeScript, and Tailwind CSS. All content is data-driven — projects, experience, achievements, and skills live in `data/*.ts` and the UI renders from them, so nothing needs to be touched in components to update content.
 
-Live at: **https://github.com/lokeshreddy2005/Portfolio** (not yet deployed — see "Deploying" below).
+Live at: **https://bolla-lokesh-reddy.vercel.app** · Source: [github.com/lokeshreddy2005/Portfolio](https://github.com/lokeshreddy2005/Portfolio)
 
 ## Tech stack
 
@@ -100,24 +100,20 @@ Everything below is a data-file edit — no component changes needed.
 - **Project GitHub links** — every project in `data/projects.ts` has `github: undefined` with a `// TODO` comment. Add each project's real repo URL as you get them (see the list you were given for exactly which slugs need one).
 - **Limit Order Book project** — added as a placeholder (`incomplete: true`) since it wasn't on any of the three resumes. Fill in `shortDescription`, `technologies`, and `highlights` in `data/projects.ts` once you send the details, then remove `incomplete: true` and set `featured: true` if it deserves a homepage spot.
 - **Codeforces / LeetCode profile URLs** — `data/social.ts` shows the stats without a link since no handle URL was in any resume. Add `url: "https://codeforces.com/profile/<handle>"` etc. once you have them.
-- **Domain** — `data/site.ts` has `url: "https://lokeshreddy.dev"` as a placeholder for SEO metadata (Open Graph, sitemap). Update it to your real deployed URL once live (see "Deploying" below) — this matters for how link previews look on LinkedIn/WhatsApp.
+- **Domain** — `data/site.ts` `url` now points to `https://bolla-lokesh-reddy.vercel.app`. If you later buy a custom domain and add it in Vercel, update this to match so Open Graph/sitemap links stay correct.
 - **Phone number** — deliberately left off the public site (avoids spam/robocalls); the resume PDFs and the email/GitHub/LinkedIn links are the contact surface. Add it to `data/social.ts` yourself if you want it public.
 
 ## Contact form
 
 `components/contact/contact-form.tsx` validates input client-side, then opens the visitor's email client via a `mailto:` link pre-filled with their message — this works with zero backend. To upgrade to a proper in-page submit later, swap the `mailto:` in `handleSubmit` for a POST to [Formspree](https://formspree.io), [Resend](https://resend.com), or a Next.js API route.
 
-## Deploying — free, on your own name
+## Deployed — free, on your own name
 
-**Recommended: Vercel** (built by the Next.js team, zero config, free tier has no card required, auto-redeploys on every push).
+**Live now on Vercel** at **https://bolla-lokesh-reddy.vercel.app**, connected to this repo's `main` branch.
 
-1. Go to [vercel.com](https://vercel.com) and sign up/log in with your **GitHub account** (`lokeshreddy2005`).
-2. Click **Add New… → Project**, then **Import** the `Portfolio` repo.
-3. Vercel auto-detects Next.js — leave every build setting on default. Click **Deploy**. It takes about a minute.
-4. You'll get a live URL like `portfolio-xyz.vercel.app`. Go to **Project Settings → Domains**, and edit the project's name/subdomain to something with your name on it, e.g. `lokeshreddy.vercel.app` or `bollalokeshreddy.vercel.app` (first-come-first-served, still 100% free, valid SSL included automatically).
-5. Update `url` in `data/site.ts` to that exact URL, commit, and push — Vercel redeploys automatically and your Open Graph/sitemap links will now be correct.
+From now on: **edit → `git push` → live in ~60 seconds**, no manual redeploy step ever needed.
 
-From then on: **edit → `git push` → live in ~60 seconds**, no manual redeploy step ever again.
+Deployed via: [vercel.com](https://vercel.com), signed in with the `lokeshreddy2005` GitHub account, repo imported with default build settings, then the project renamed (Settings → General → Project Name) to `bolla-lokesh-reddy` and that domain added under **Domains** (adding a `<name>.vercel.app` domain that matches your project name attaches instantly, no DNS needed).
 
 **Optional later: a real custom domain** (e.g. `lokeshreddy.dev`, ~$10–15/year from Namecheap, Porkbun, or Google Domains — this part isn't free). Buy it, then in the same Vercel **Domains** settings, add it and follow the DNS instructions Vercel shows you (usually one CNAME record). SSL is provisioned automatically.
 
