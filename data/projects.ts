@@ -10,7 +10,7 @@ export const projects: Project[] = [
     technologies: ["Python", "FastAPI", "Redis Streams", "PostgreSQL"],
     featured: true,
     tracks: ["software", "quant"],
-    github: undefined, // TODO: add this project's repo URL
+    github: "https://github.com/lokeshreddy2005/distributed-job-processing",
     highlights: [
       "Built a fault-tolerant asynchronous job processing platform with worker pools, explicit job lifecycle management, retries, dead-letter queues, and persistent state-transition history.",
       "Implemented at-least-once delivery using Redis consumer groups, stale-message reclamation, exponential-backoff retries, and hash-based idempotency for safe recovery from worker crashes.",
@@ -43,7 +43,7 @@ export const projects: Project[] = [
     ],
     featured: true,
     tracks: ["software", "quant"],
-    github: undefined, // TODO: add this project's repo URL
+    github: "https://github.com/lokeshreddy2005/hybrid-search",
     highlights: [
       "Built a hybrid information-retrieval engine combining a from-scratch inverted index and BM25 lexical retrieval with dense Sentence Transformer embeddings and FAISS vector search.",
       "Implemented Reciprocal Rank Fusion and a labeled evaluation pipeline to compare lexical, dense, and hybrid retrieval, with reproducible indexing, API serving, and performance benchmarking.",
@@ -97,7 +97,7 @@ export const projects: Project[] = [
     technologies: ["C++", "Compiler Design", "Lexing & Parsing", "Code Generation"],
     team: "Team of 6",
     featured: true,
-    github: undefined, // TODO: add this project's specific repo URL
+    github: "https://github.com/KaushalMorankar/GraphX",
     highlights: [
       "Designed a DSL for graph programming with first-class graph, vertex-set, and edge-set abstractions, enabling high-level construction and manipulation of dynamic graphs.",
       "Defined graph-specific operators and built-in algorithms including BFS/DFS, Dijkstra, Bellman-Ford, MST, topological sorting, connected components, bridges, and articulation points.",
@@ -125,7 +125,7 @@ export const projects: Project[] = [
     team: "Team of 2",
     featured: true,
     tracks: ["software", "quant"],
-    github: undefined, // TODO: add this project's specific repo URL
+    github: "https://github.com/lokeshreddy2005/Bitcoin-mining",
     highlights: [
       "Designed a Bitcoin mining framework implementing static multithreaded partitioning, dynamic work stealing, and MPI-based distributed mining for parallel nonce search using SHA-256 hashing.",
       "Implemented dynamic work distribution and parallel execution across threads and processes, addressing load imbalance in fixed-partition mining through fine-grained work allocation.",
@@ -155,7 +155,7 @@ export const projects: Project[] = [
     featured: false,
     tracks: ["quant"],
     incomplete: true,
-    github: undefined, // TODO: add this project's repo URL
+    github: "https://github.com/lokeshreddy2005/limit-order-book",
     highlights: [
       "This entry is a placeholder — tell Claude (or edit data/projects.ts directly) what your limit order book implementation does: matching engine design (price-time priority, order types supported), data structures used, and any performance results or benchmarks.",
     ],
@@ -260,7 +260,7 @@ export const projects: Project[] = [
     technologies: ["C++", "RV32I", "Computer Architecture"],
     featured: false,
     tracks: ["software"],
-    github: undefined, // TODO: add this project's specific repo URL
+    github: "https://github.com/lokeshreddy2005/Assembler",
     highlights: [
       "Built a custom simulator to decode and execute the RV32I instruction set with memory and register modules.",
       "Enabled debugging via a CLI interface and memory inspection features.",
@@ -275,7 +275,7 @@ export const projects: Project[] = [
     technologies: ["C++", "Computer Architecture"],
     featured: false,
     tracks: ["software"],
-    github: undefined, // TODO: add this project's specific repo URL
+    github: "https://github.com/lokeshreddy2005/Simulator",
     highlights: [
       "Designed and evaluated a CPU cache simulator in C++ with support for direct-mapped, set-associative, and fully-associative configurations.",
       "Benchmarked hit/miss ratios under multiple replacement policies.",
@@ -289,7 +289,7 @@ export const projects: Project[] = [
     category: "Systems",
     technologies: ["C++", "Concurrency"],
     featured: false,
-    github: undefined, // TODO: add this project's specific repo URL
+    github: "https://github.com/lokeshreddy2005/Multi-threaded-sudoku-validator",
     highlights: [
       "Used TAS, CAS, and Bounded CAS for concurrency control and validated Sudoku grids in parallel.",
       "Measured execution performance over varying thread counts and grid sizes.",
@@ -317,7 +317,7 @@ export const projects: Project[] = [
     category: "Systems",
     technologies: ["C++"],
     featured: false,
-    github: undefined, // TODO: add this project's specific repo URL
+    github: "https://github.com/lokeshreddy2005/Infinite-Precision-Arithmetic",
     highlights: [
       "Implemented arithmetic operations (add, sub, mult, div) for arbitrarily large integers and floating-point numbers.",
       "Used string manipulation and dynamic memory handling to work around native language limitations.",
