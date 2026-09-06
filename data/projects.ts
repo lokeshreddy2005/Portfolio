@@ -178,7 +178,7 @@ export const projects: Project[] = [
     ],
     team: "Team of 6",
     featured: false,
-    github: undefined, // TODO: add this project's specific repo URL
+    github: "https://github.com/lokeshreddy2005/DMR",
     live: "https://document-management-repository.vercel.app/",
     highlights: [
       "AI-powered document tagging and intelligent vault routing using Groq LLaMA, alongside manual organization and full document lifecycle management.",

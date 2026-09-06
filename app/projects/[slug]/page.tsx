@@ -97,7 +97,12 @@ export default async function ProjectPage({
             <Badge key={tech}>{tech}</Badge>
           ))}
         </div>
-        <div className="flex flex-wrap items-center gap-3 pt-3">
+        <div
+          className={cn(
+            "flex flex-wrap items-center gap-3",
+            (project.live || project.github) && "pt-3"
+          )}
+        >
           {project.live ? (
             <Button href={project.live} external size="sm">
               <ExternalLink className="h-4 w-4" />
@@ -109,11 +114,7 @@ export default async function ProjectPage({
               <GithubIcon className="h-4 w-4" />
               View on GitHub
             </Button>
-          ) : (
-            <span className="font-mono text-xs text-muted-foreground">
-              [ repo link coming soon ]
-            </span>
-          )}
+          ) : null}
         </div>
       </Reveal>
 
