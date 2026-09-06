@@ -1,36 +1,126 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Lokesh Reddy — Portfolio
 
-## Getting Started
+A recruiter-facing developer portfolio for Bolla Lokesh Reddy, built with Next.js (App Router), TypeScript, and Tailwind CSS. All content is data-driven — projects, experience, achievements, and skills live in `data/*.ts` and the UI renders from them, so nothing needs to be touched in components to update content.
 
-First, run the development server:
+Live at: **https://github.com/lokeshreddy2005/Portfolio** (not yet deployed — see "Deploying" below).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Tech stack
+
+- **Framework:** Next.js 16 (App Router, Server Components)
+- **Language:** TypeScript (strict mode)
+- **Styling:** Tailwind CSS v4, with a category-based color system (`lib/category-colors.ts`) and a multi-color "aurora" gradient in the hero
+- **Animation:** Framer Motion — scroll-reveal on every section (`components/motion/reveal.tsx`), animated stat counters (`components/motion/counter.tsx`), a fade/slide transition between pages (`components/motion/page-transition.tsx`), and animated project-grid filtering
+- **Icons:** lucide-react (+ two hand-rolled brand SVGs for GitHub/LinkedIn, since lucide-react no longer ships brand logos)
+- **Theme:** next-themes (light/dark/system, no flash on load)
+- No database, no backend — content is TypeScript data files; the contact form opens the visitor's email client (see "Contact form" below).
+
+## Folder structure
+
+```
+app/                  routes (App Router)
+  page.tsx            home
+  projects/            /projects and /projects/[slug]
+  experience/          /experience
+  achievements/        /achievements
+  about/                /about
+  resume/               /resume (tabbed: General / Software / Quant)
+  contact/              /contact
+  sitemap.ts, robots.ts, icon.tsx, not-found.tsx
+components/
+  layout/              navbar, footer, theme provider/toggle
+  home/                 homepage sections
+  projects/             project card, filter/search/track UI
+  resume/               resume track switcher
+  contact/              contact form
+  motion/               reveal, counter, page-transition (Framer Motion)
+  ui/                   button, badge, container, section heading, icons
+data/                  ALL editable content lives here
+  site.ts              site metadata + resumeTracks config
+  social.ts, projects.ts, experience.ts,
+  education.ts, achievements.ts, skills.ts
+lib/
+  types.ts             shared TypeScript interfaces for the data files
+  utils.ts             cn() classnames helper
+  category-colors.ts   color mapping per project category
+public/
+  resume.pdf            general resume
+  resume-software.pdf   tailored for SWE roles
+  resume-quant.pdf      tailored for quant roles
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Running locally
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm install
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Open [http://localhost:3000](http://localhost:3000).
 
-## Learn More
+```bash
+npm run lint    # ESLint
+npm run build   # production build (also type-checks)
+npm run start   # serve the production build locally
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Two resumes, one portfolio
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+`/resume` has three tabs — **General**, **Software Engineering**, and **Quantitative Research** — configured in `resumeTracks` inside [`data/site.ts`](data/site.ts). Each tab shows its own PDF and its own "Key projects on this resume" list.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Projects are tagged with which resume(s) they belong to via the optional `tracks` field in [`data/projects.ts`](data/projects.ts):
 
-## Deploy on Vercel
+```ts
+tracks: ["software", "quant"],  // shows up on both tailored resumes
+tracks: ["quant"],              // quant resume only
+// omit `tracks` entirely for general-portfolio-only projects
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The `/projects` page also has a "Software track / Quant track" filter using the same field, independent of the category filter.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Updating content
+
+Everything below is a data-file edit — no component changes needed.
+
+**Add a project** — add an object to the `projects` array in [`data/projects.ts`](data/projects.ts). Give it a unique `slug`; that becomes its URL at `/projects/<slug>`. Set `featured: true` to show it on the homepage (keep it to ~5 at a time). Set `tracks` if it belongs on a tailored resume. Optional fields (`problem`, `approach`, `learnings`) render as extra sections on the project's page if present, and are hidden if omitted. Set `incomplete: true` to show a "Draft" badge instead of pretending a placeholder entry is finished — remove it once real content is in.
+
+**Update experience** — edit [`data/experience.ts`](data/experience.ts). `type: "Internship"` and `type: "Leadership"` are grouped separately on `/experience`.
+
+**Update achievements / education** — edit [`data/achievements.ts`](data/achievements.ts) and [`data/education.ts`](data/education.ts). Give a competitive-programming entry `value`/`suffix` (e.g. `value: 1400, suffix: "+ rating"`) to get the animated count-up on the homepage and achievements page.
+
+**Update skills** — edit [`data/skills.ts`](data/skills.ts), grouped by category.
+
+**Update social links** — edit [`data/social.ts`](data/social.ts). Leaving `url: undefined` on an entry (used currently for Codeforces/LeetCode, since no profile URL was provided) hides the link but keeps any `note` text visible.
+
+**Replace a resume** — overwrite `public/resume.pdf`, `public/resume-software.pdf`, or `public/resume-quant.pdf` (keep the same filenames), or add a new track by adding an entry to `resumeTracks` in `data/site.ts` plus its PDF in `public/`.
+
+**Add a new category color** — categories are typed in `lib/types.ts` (`ProjectCategory`) and colored in `lib/category-colors.ts`. Add both together when introducing a new category.
+
+## Known placeholders to fill in
+
+- **Project GitHub links** — every project in `data/projects.ts` has `github: undefined` with a `// TODO` comment. Add each project's real repo URL as you get them (see the list you were given for exactly which slugs need one).
+- **Limit Order Book project** — added as a placeholder (`incomplete: true`) since it wasn't on any of the three resumes. Fill in `shortDescription`, `technologies`, and `highlights` in `data/projects.ts` once you send the details, then remove `incomplete: true` and set `featured: true` if it deserves a homepage spot.
+- **Codeforces / LeetCode profile URLs** — `data/social.ts` shows the stats without a link since no handle URL was in any resume. Add `url: "https://codeforces.com/profile/<handle>"` etc. once you have them.
+- **Domain** — `data/site.ts` has `url: "https://lokeshreddy.dev"` as a placeholder for SEO metadata (Open Graph, sitemap). Update it to your real deployed URL once live (see "Deploying" below) — this matters for how link previews look on LinkedIn/WhatsApp.
+- **Phone number** — deliberately left off the public site (avoids spam/robocalls); the resume PDFs and the email/GitHub/LinkedIn links are the contact surface. Add it to `data/social.ts` yourself if you want it public.
+
+## Contact form
+
+`components/contact/contact-form.tsx` validates input client-side, then opens the visitor's email client via a `mailto:` link pre-filled with their message — this works with zero backend. To upgrade to a proper in-page submit later, swap the `mailto:` in `handleSubmit` for a POST to [Formspree](https://formspree.io), [Resend](https://resend.com), or a Next.js API route.
+
+## Deploying — free, on your own name
+
+**Recommended: Vercel** (built by the Next.js team, zero config, free tier has no card required, auto-redeploys on every push).
+
+1. Go to [vercel.com](https://vercel.com) and sign up/log in with your **GitHub account** (`lokeshreddy2005`).
+2. Click **Add New… → Project**, then **Import** the `Portfolio` repo.
+3. Vercel auto-detects Next.js — leave every build setting on default. Click **Deploy**. It takes about a minute.
+4. You'll get a live URL like `portfolio-xyz.vercel.app`. Go to **Project Settings → Domains**, and edit the project's name/subdomain to something with your name on it, e.g. `lokeshreddy.vercel.app` or `bollalokeshreddy.vercel.app` (first-come-first-served, still 100% free, valid SSL included automatically).
+5. Update `url` in `data/site.ts` to that exact URL, commit, and push — Vercel redeploys automatically and your Open Graph/sitemap links will now be correct.
+
+From then on: **edit → `git push` → live in ~60 seconds**, no manual redeploy step ever again.
+
+**Optional later: a real custom domain** (e.g. `lokeshreddy.dev`, ~$10–15/year from Namecheap, Porkbun, or Google Domains — this part isn't free). Buy it, then in the same Vercel **Domains** settings, add it and follow the DNS instructions Vercel shows you (usually one CNAME record). SSL is provisioned automatically.
+
+**Alternatives** (if you'd rather not use Vercel):
+- **Cloudflare Pages** — also free, also auto-deploys from GitHub, slightly more setup for the Next.js runtime adapter.
+- **GitHub Pages** — free and simple, but this app isn't currently configured for static export (`output: "export"` in `next.config.ts`), and GitHub Pages would serve it at `lokeshreddy2005.github.io/Portfolio` (a subpath) unless the repo is renamed to `lokeshreddy2005.github.io`. Vercel avoids all of this, which is why it's the recommendation.
