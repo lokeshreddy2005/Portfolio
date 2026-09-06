@@ -28,10 +28,11 @@ export const achievements: AchievementEntry[] = [
   {
     id: "codeforces",
     title: "Codeforces",
-    detail: "Specialist · Max rating 1421",
+    detail: "Specialist (Max Rating 1421)",
     category: "Competitive Programming",
     value: 1421,
-    suffix: " · Specialist",
+    prefix: "Specialist (Max Rating ",
+    suffix: ")",
   },
   {
     id: "leetcode",

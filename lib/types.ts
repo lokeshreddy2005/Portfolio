@@ -58,8 +58,9 @@ export interface AchievementEntry {
   title: string;
   detail: string;
   category: "Academic" | "Competitive Programming";
-  /** Optional numeric value + suffix for an animated counter, e.g. value: 1400, suffix: "+ rating" */
+  /** Optional numeric value + prefix/suffix for an animated counter, e.g. value: 500, suffix: "+ solved" */
   value?: number;
+  prefix?: string;
   suffix?: string;
 }
 

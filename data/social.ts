@@ -21,7 +21,7 @@ export const socialLinks: SocialLink[] = [
     label: "Codeforces",
     url: "https://codeforces.com/profile/Black_Rock_8025",
     icon: "codeforces",
-    note: "Specialist · Max rating 1421",
+    note: "Specialist (Max Rating 1421)",
   },
   {
     label: "LeetCode",

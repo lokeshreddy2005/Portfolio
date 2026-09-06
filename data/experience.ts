@@ -3,7 +3,7 @@ import { ExperienceEntry } from "@/lib/types";
 export const experience: ExperienceEntry[] = [
   {
     id: "adobe",
-    organization: "Adobe — Content Intelligence Team",
+    organization: "Adobe",
     role: "Machine Learning Engineering Intern",
     startDate: "May 2026",
     endDate: "July 2026",

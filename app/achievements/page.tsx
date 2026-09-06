@@ -63,7 +63,11 @@ export default function AchievementsPage() {
               <p className="font-medium">{item.title}</p>
               <p className="mt-1 text-sm text-muted-foreground">
                 {item.value ? (
-                  <Counter value={item.value} suffix={item.suffix} />
+                  <Counter
+                    value={item.value}
+                    prefix={item.prefix}
+                    suffix={item.suffix}
+                  />
                 ) : (
                   item.detail
                 )}

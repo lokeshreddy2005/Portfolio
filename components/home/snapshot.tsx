@@ -42,7 +42,11 @@ export function Snapshot() {
             </p>
             <p className="mt-2 text-base font-medium">
               {codeforces ? (
-                <Counter value={codeforces.value ?? 0} suffix={codeforces.suffix} />
+                <Counter
+                  value={codeforces.value ?? 0}
+                  prefix={codeforces.prefix}
+                  suffix={codeforces.suffix}
+                />
               ) : (
                 codeforces
               )}
@@ -57,7 +61,11 @@ export function Snapshot() {
             </p>
             <p className="mt-2 text-base font-medium">
               {leetcode ? (
-                <Counter value={leetcode.value ?? 0} suffix={leetcode.suffix} />
+                <Counter
+                  value={leetcode.value ?? 0}
+                  prefix={leetcode.prefix}
+                  suffix={leetcode.suffix}
+                />
               ) : (
                 leetcode
               )}

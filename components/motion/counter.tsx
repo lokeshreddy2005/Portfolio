@@ -5,11 +5,13 @@ import { useInView } from "framer-motion";
 
 export function Counter({
   value,
+  prefix = "",
   suffix = "",
   duration = 1200,
   className,
 }: {
   value: number;
+  prefix?: string;
   suffix?: string;
   duration?: number;
   className?: string;
@@ -36,6 +38,7 @@ export function Counter({
 
   return (
     <span ref={ref} className={className}>
+      {prefix}
       {display}
       {suffix}
     </span>

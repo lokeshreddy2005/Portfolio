@@ -52,12 +52,11 @@ export default function AboutPage() {
           as I am about retrieval fusion or point-in-time data alignment.
         </p>
         <p>
-          Most recently, I worked as a Machine Learning Engineering Intern on
-          Adobe&apos;s Content Intelligence team (May–July 2026), building a
-          pipeline that extracts structural layout intelligence from
-          marketing email HTML using DOM geometry, Gemini-based semantic
-          annotation, and embedding clustering. I&apos;m back on campus now,
-          finishing my final year.
+          Most recently, I worked as a Machine Learning Engineering Intern at
+          Adobe (May–July 2026), building a pipeline that extracts
+          structural layout intelligence from marketing email HTML using DOM
+          geometry, Gemini-based semantic annotation, and embedding
+          clustering. I&apos;m back on campus now, finishing my final year.
         </p>
         <p>
           On campus, I coordinate internship outreach for the Office of
