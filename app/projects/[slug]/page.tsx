@@ -6,7 +6,7 @@ import { getProjectBySlug, projects } from "@/data/projects";
 import { categoryColors } from "@/lib/category-colors";
 import { cn } from "@/lib/utils";
 import { GithubIcon } from "@/components/ui/brand-icons";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ExternalLink } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -97,7 +97,13 @@ export default async function ProjectPage({
             <Badge key={tech}>{tech}</Badge>
           ))}
         </div>
-        <div className="flex flex-wrap gap-3 pt-3">
+        <div className="flex flex-wrap items-center gap-3 pt-3">
+          {project.live ? (
+            <Button href={project.live} external size="sm">
+              <ExternalLink className="h-4 w-4" />
+              Live Demo
+            </Button>
+          ) : null}
           {project.github ? (
             <Button href={project.github} external variant="outline" size="sm">
               <GithubIcon className="h-4 w-4" />

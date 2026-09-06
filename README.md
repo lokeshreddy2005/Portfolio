@@ -97,9 +97,8 @@ Everything below is a data-file edit — no component changes needed.
 
 ## Known placeholders to fill in
 
-- **Project GitHub links** — every project in `data/projects.ts` has `github: undefined` with a `// TODO` comment. Add each project's real repo URL as you get them (see the list you were given for exactly which slugs need one).
+- **Project GitHub links** — every project in `data/projects.ts` except Document Management Repository (which has a `live` demo link instead) still has `github: undefined` with a `// TODO` comment. Add each project's real repo URL as you get them.
 - **Limit Order Book project** — added as a placeholder (`incomplete: true`) since it wasn't on any of the three resumes. Fill in `shortDescription`, `technologies`, and `highlights` in `data/projects.ts` once you send the details, then remove `incomplete: true` and set `featured: true` if it deserves a homepage spot.
-- **Codeforces / LeetCode profile URLs** — `data/social.ts` shows the stats without a link since no handle URL was in any resume. Add `url: "https://codeforces.com/profile/<handle>"` etc. once you have them.
 - **Domain** — `data/site.ts` `url` now points to `https://bolla-lokesh-reddy.vercel.app`. If you later buy a custom domain and add it in Vercel, update this to match so Open Graph/sitemap links stay correct.
 - **Phone number** — deliberately left off the public site (avoids spam/robocalls); the resume PDFs and the email/GitHub/LinkedIn links are the contact surface. Add it to `data/social.ts` yourself if you want it public.
 

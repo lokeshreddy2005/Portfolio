@@ -19,15 +19,13 @@ export const socialLinks: SocialLink[] = [
   },
   {
     label: "Codeforces",
-    // TODO: add your Codeforces profile URL — rating is shown without a link until then.
-    url: undefined,
+    url: "https://codeforces.com/profile/Black_Rock_8025",
     icon: "codeforces",
     note: "1400+ rating",
   },
   {
     label: "LeetCode",
-    // TODO: add your LeetCode profile URL — count is shown without a link until then.
-    url: undefined,
+    url: "https://leetcode.com/u/lokesh_reddy_8025/",
     icon: "leetcode",
     note: "500+ problems solved",
   },
